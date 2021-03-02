@@ -71,14 +71,12 @@ void check_bf(string path_to_sets, vector<int> ks, vector<float> ds) {
 
 int main(int argc, const char * argv[]) {
     
-    string path_to_sets = "/Users/yifan/Projects/L2P/datasets/kosarak/all.dat";
+    string path_to_sets = "../datasets/kosarak/all.dat";
     
-    string path_to_groups = "/Users/yifan/Projects/L2P/datasets/kosarak/budgeted-200/all.dat-group-4";
+    string path_to_groups = "../datasets/kosarak/LES3";
     
-    // vector<int> ks({2,10,50,100});
-    // vector<float> ds({0.9,0.7,0.5,0.3,0.1});
-    vector<int> ks({2});
-    vector<float> ds({});
+    vector<int> ks({2,10,50,100});
+    vector<float> ds({0.9,0.7,0.5,0.3,0.1});
     
     check_les3(path_to_sets, path_to_groups, ks, ds);
     check_ii(path_to_sets, ks, ds);

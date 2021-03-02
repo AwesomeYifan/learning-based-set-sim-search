@@ -82,7 +82,7 @@ def write_reps(path, reps_of_tokens):
                     rep.append(sum/max_rep_num)
                 writeFile.write(str(idx) + ',' + ' '.join(str(_rep) for _rep in rep) + '\n')
                 idx += 1
-    
+
 def compute_jac_dist(set1, set2):
     common_tokens = set(set1).intersection(set(set2))
     dist = 1 - len(common_tokens) / (len(set1) + len(set2) - len(common_tokens))
@@ -150,7 +150,7 @@ def build_doc2vec_rep(path):
 num_sets = 49482
 num_tokens = 18735
 
-path = "datasets/kosarak-5percent/all.dat"
+path = "datasets/kosarak-sampled/all.dat"
 start_time = time.time()
 build_PTR_rep(path)
 # build_PCA_rep(path)

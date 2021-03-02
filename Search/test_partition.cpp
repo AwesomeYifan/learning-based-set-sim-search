@@ -43,9 +43,9 @@ void check_l2p(string path_to_sets, string path_to_groups) {
 
 int main(int argc, const char * argv[]) {
     
-    string path_to_sets = "/Users/yifan/Projects/L2P/datasets/kosarak/all.dat";
+    string path_to_sets = "../datasets/kosarak/all.dat";
     
-    string path_to_groups = "/Users/yifan/Projects/L2P/datasets/kosarak/budgeted-200/all.dat-group-4";
+    string path_to_groups = "../datasets/kosarak/LES3";
     
     check_par_g(path_to_sets, path_to_groups);
    
