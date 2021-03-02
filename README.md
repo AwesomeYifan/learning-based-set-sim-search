@@ -10,6 +10,7 @@ The links to the five datasets used in the paper:
 * AOL: http://www.cim.mcgill.ca/~dudek/206/Logs/AOL-user-ct-collection/
 * FS: https://snap.stanford.edu/data/com-Friendster.html
 * PMC: http://academictorrents.com/details/06d6badd7d1b0cfee00081c28fddd5e15e106165
+* 
 Process the raw dataset downloaded from above websites with `Partition/process_database.py`, which includes tokenization (so that tokens are labeled 1, 2, 3,...) and sorting (details given in Section 7.1, paragraph `initialization`), and a file named `all.dat` will be produced. The KOSARAK dataset and the sampled KOSARAK used in Section 7.3 are given in folder `datasets`.
 ## To reproduce the results
 ### L2P
