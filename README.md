@@ -1,4 +1,4 @@
-# learning-based-set-sim-search
+# LES3: Learning-based Exact Set Similarity Search
 The repository is being updated.
 ## Structure
 Folder `Partition` contains the implementation of all partitioning methods (L2P, PAR_G, PAR_C, PAR_H) and embedding methods (PTR, PCA, MDS, doc2vec). Folder `Search` contains the implementation of set similarity search methods, including LES3, DualTrans, InvIdx, and the Brute-force method.
