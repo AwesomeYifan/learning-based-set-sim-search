@@ -1,7 +1,66 @@
 import numpy as np
 import random
 
-class PAR_H:
+class PAR_A:
+    def __init__(self, num_clusters):
+        self.num_clusters = num_clusters
+        self.labels_ = None
+    
+    def find_groups_to_merge(self, database, groups):
+        min_group_id = 0
+        min_group_size = len(groups[0])
+        for i in range(len(groups)):
+            if len(groups[i]) < min_group_size:
+                min_group_id = i
+                min_group_size = len(groups[i])
+        other_group_id = 0
+        min_sum_dist = np.inf
+        for i in range(len(groups)):
+            if i == min_group_id:
+                continue
+            temp_group_ids = groups[i].copy()
+            temp_group_ids.extend(groups[min_group_id])
+            new_group = Group()
+            new_group.initialize(database, temp_group_ids)
+            if min_sum_dist > new_group.sum_dist:
+                other_group_id = i
+                min_sum_dist = new_group.sum_dist
+        return min(min_group_id, other_group_id), max(min_group_id, other_group_id)
+
+    def fit(self, database):
+        all_ids = list(range(len(database)))
+        random.shuffle(all_ids)
+
+        groups = [[i] for i in range(len(database))]
+       
+
+        while len(groups) > self.num_clusters:
+            print(len(groups))
+
+            g1, g2 = self.find_groups_to_merge(database, groups)
+            
+            new_group = groups[g1].copy()
+            new_group.extend(groups[g2])
+            
+            del groups[g2]
+            del groups[g1]
+            groups.append(new_group)
+
+        labels = [0]*len(database)
+        for i in range(self.num_clusters):
+            for set_id in groups[i].all_sets:
+                labels[set_id] = i
+        self.labels = labels
+    
+    def get_groups(self):
+        groups = [[] for _ in range(self.num_clusters)]
+        for i in range(len(self.labels)):
+            group_id = self.labels[i]
+            set_id = i
+            groups[group_id].append(set_id)
+        return groups
+
+class PAR_D:
     def __init__(self, num_clusters):
         self.num_clusters = num_clusters
         self.labels_ = None
@@ -166,7 +225,6 @@ class Group:
     def remove(self, set_id):
         self.all_sets.remove(set_id)
 
-    
     def update_sum_dist(self, database):
         sets_to_check = self.get_sets_to_check()
         overall_dist = 0
